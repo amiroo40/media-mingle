@@ -9,11 +9,11 @@ import {
 
 import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
-import {SigninValidation } from "@/lib/validation"
+import { SigninValidation } from "@/lib/validation"
 import { z } from "zod"
 import Loader from "@/components/shared/Loader"
 import { Link, useNavigate } from "react-router-dom"
-import { useSingInAccount } from "@/lib/react-query/queriesAndMutations"
+import { useSignInAccount } from "@/lib/react-query/queries"
 import { useUserContext } from "@/context/AuthContext"
 
 const SigninForm = () => {
@@ -22,7 +22,7 @@ const SigninForm = () => {
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext()
   const navigate = useNavigate()
 
-  const { mutateAsync: signInAccount} = useSingInAccount()
+  const { mutateAsync: signInAccount } = useSignInAccount()
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof SigninValidation>>({
